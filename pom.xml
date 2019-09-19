@@ -7,8 +7,22 @@
     <groupId>org.fred.example</groupId>
     <artifactId>text-extraction-scanned-pdf</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <properties>
         <tika.version>1.9</tika.version>
+        <pdfbox.version>2.0.16</pdfbox.version>
+        <tess.version>3.5.2</tess.version>
     </properties>
 
 
@@ -25,6 +39,27 @@
             <artifactId>tika-parsers</artifactId>
             <version>${tika.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>${pdfbox.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>net.sourceforge.tess4j</groupId>
+            <artifactId>tess4j</artifactId>
+            <version>${tess.version}</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.github.jai-imageio</groupId>-->
+<!--            <artifactId>jai-imageio-core</artifactId>-->
+<!--            <version>1.4.0</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
 
