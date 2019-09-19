@@ -17,31 +17,29 @@ import java.io.*;
 import java.util.LinkedList;
 
 public class TesseractScannedPdfTextExtraction {
-    private Tesseract tesseracta = new Tesseract();
-
-
-
-
-
-
-
-
-
-
-
-
+   static Tesseract tesseract = new Tesseract();
 
 
     public static void extractTextFromScannedPdfWithTikaOCR(String fileName) throws IOException {
-        InputStream stream = null;
-        stream = new FileInputStream(fileName);
+        //Set path to tesseract tessdata (usually in /usr/share/tessdata after installing Tesseract in linux)
+        tesseract.setDatapath("/usr/share/tessdata");
+
+        File file = new File(fileName);
+
+        String ocrResults = extractText(file);
+        if (ocrResults == null || ocrResults.equals("")) {
+            System.out.println("Empty text");
+        }else{
+            System.out.println(ocrResults);
+        }
+
 
 
     }
 
 
     // Preprocess the bufferedImage
-    private BufferedImage correctSkewness(BufferedImage image) {
+    private static BufferedImage correctSkewness(BufferedImage image) {
 
         /*
          * This method corrects skewness of the image, if necessary
@@ -61,7 +59,7 @@ public class TesseractScannedPdfTextExtraction {
 
 
     // Extract text from pdf images
-    private String extractTextFromImage(BufferedImage image,Tesseract tesseract) {
+    private static String extractTextFromImage(BufferedImage image) {
 
         BufferedImage grayImage = ImageHelper.convertImageToGrayscale(image);
         String ocrResults = null;
@@ -83,30 +81,11 @@ public class TesseractScannedPdfTextExtraction {
     }
 
 
-    /* Get byte arrays from inputstream
-     *  @ return byte[]
-     *
-     * */
-    private byte[] getArrayFromInputStream(InputStream inputStream) throws IOException {
-        byte[] bytes;
-        byte[] buffer = new byte[1024];
-        try(BufferedInputStream is = new BufferedInputStream(inputStream)){
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            int length;
-            while ((length = is.read(buffer)) > -1 ) {
-                bos.write(buffer, 0, length);
-            }
-            bos.flush();
-            bytes = bos.toByteArray();
-        }
-        return bytes;
-    }
-
 
     /* Check for scanned pdf and return contained images
      * @return LinkedList<BufferedImage>
      * */
-    private LinkedList<BufferedImage> checkScannedPdf(File pdfFile ) throws IOException {
+    private static LinkedList<BufferedImage> checkScannedPdf(File pdfFile ) throws IOException {
         int images = 0;
         int numberOfPages = 0;
 
@@ -154,11 +133,21 @@ public class TesseractScannedPdfTextExtraction {
 
 
     // Extract text
-    private String extractText(byte[] bytes) {
+    private static  String extractText(File file) throws IOException {
         StringBuilder extractedText = new StringBuilder("");
         LinkedList<BufferedImage> bufferedImageList = new LinkedList<BufferedImage>();
+        bufferedImageList = checkScannedPdf(file);
 
+        if(!bufferedImageList.isEmpty()){
+            for(BufferedImage image: bufferedImageList){
+                BufferedImage deskewedImage = correctSkewness(image);
+                String text = extractTextFromImage(deskewedImage);
 
+                if(text != null ) {
+                    extractedText.append(text);
+                }
+            }
+        }
 
         return extractedText.toString();
     }

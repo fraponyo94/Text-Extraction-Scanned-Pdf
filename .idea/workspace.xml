@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a730d5a9-f8c8-4bd8-9ebc-486076f1c5ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tesseract/ocr/TesseractScannedPdfTextExtraction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tesseract/ocr/TesseractScannedPdfTextExtraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tesseract/ocr/TesseractScannedPdfTextExtraction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tesseract/ocr/TesseractScannedPdfTextExtraction.java___jb_tmp___" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,23 +29,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/tesseract/ocr/TesseractScannedPdfTextExtraction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="661">
-              <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
+            <state relative-caret-position="525">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4348#4363#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/tika/ocr/ExtractTextFromScannedPdf.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="42" selection-start-line="40" selection-start-column="7" selection-end-line="42" />
+            <state relative-caret-position="-30">
+              <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -164,12 +164,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568890225104</updated>
-      <workItem from="1568890231402" duration="2210000" />
+      <workItem from="1568890231402" duration="4782000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2210000" />
+    <option name="totallyTimeSpent" value="4782000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="0" width="1604" height="872" extended-state="6" />
@@ -216,20 +216,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tika/ocr/ExtractTextFromScannedPdf.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/tesseract/ocr/TesseractScannedPdfTextExtraction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="42" selection-start-line="40" selection-start-column="7" selection-end-line="42" />
+        <state relative-caret-position="525">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4348#4363#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tesseract/ocr/TesseractScannedPdfTextExtraction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/tika/ocr/ExtractTextFromScannedPdf.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
+        <state relative-caret-position="-30">
+          <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
