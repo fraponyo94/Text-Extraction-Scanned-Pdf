@@ -17,7 +17,7 @@ import java.io.InputStream;
 public class ExtractTextFromScannedPdf {
 
     public static void main(String[] args) {
-      String filename = "path/to/file/filename.pdf";
+      String filename = "/home/fred/Practice-docs/scanned-pdf/sample-scanned-pdfs/PublicWaterMassMailing.pdf";
 
         try {
             extractTextFromScannedPdfWithTikaOCR(filename);

@@ -11,6 +11,15 @@ import org.apache.pdfbox.pdmodel.PDPageTree;
 import org.apache.pdfbox.pdmodel.PDResources;
 import org.apache.pdfbox.pdmodel.graphics.PDXObject;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import org.apache.tika.exception.TikaException;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.AutoDetectParser;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.Parser;
+import org.apache.tika.parser.ocr.TesseractOCRConfig;
+import org.apache.tika.parser.pdf.PDFParserConfig;
+import org.apache.tika.sax.BodyContentHandler;
+import org.xml.sax.SAXException;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -18,20 +27,32 @@ import java.util.LinkedList;
 
 public class TesseractScannedPdfTextExtraction {
    static Tesseract tesseract = new Tesseract();
-
-
-    public static void extractTextFromScannedPdfWithTikaOCR(String fileName) throws IOException {
+    public static void main(String[] args){
         //Set path to tesseract tessdata (usually in /usr/share/tessdata after installing Tesseract in linux)
         tesseract.setDatapath("/usr/share/tessdata");
+
+        try {
+            extractTextFromScannedPdfWithTesseractOCr("/home/fred/Practice-docs/scanned-pdf/sample-scanned-pdfs/ED121193.pdf");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void extractTextFromScannedPdfWithTesseractOCr(String fileName) throws IOException {
+
 
         File file = new File(fileName);
 
         String ocrResults = extractText(file);
+
         if (ocrResults == null || ocrResults.equals("")) {
             System.out.println("Empty text");
-        }else{
+        }else {
+
             System.out.println(ocrResults);
         }
+
 
 
 
@@ -61,7 +82,12 @@ public class TesseractScannedPdfTextExtraction {
     // Extract text from pdf images
     private static String extractTextFromImage(BufferedImage image) {
 
+
         BufferedImage grayImage = ImageHelper.convertImageToGrayscale(image);
+
+
+
+
         String ocrResults = null;
         try {
             ocrResults = tesseract.doOCR(grayImage).replaceAll("\\n{2,}", "\n");
@@ -82,7 +108,7 @@ public class TesseractScannedPdfTextExtraction {
 
 
 
-    /* Check for scanned pdf and return contained images
+   /*
      * @return LinkedList<BufferedImage>
      * */
     private static LinkedList<BufferedImage> checkScannedPdf(File pdfFile ) throws IOException {
@@ -122,11 +148,13 @@ public class TesseractScannedPdfTextExtraction {
         doc.close();
 
         //  pdf pages if equal to the images === scanned pdf ===
-        if (numberOfPages == images) {
+        if (numberOfPages == images || images > numberOfPages) {
+
             return bufferedImages;
         } else {
 
             return new LinkedList<>();
+
         }
 
     }
@@ -151,5 +179,9 @@ public class TesseractScannedPdfTextExtraction {
 
         return extractedText.toString();
     }
+
+
+
+
 
 }
